@@ -1,0 +1,34 @@
+import api from "./api"
+
+// Start new testing request
+export const startTestingRequest = async () => {
+  const res = await api.post("/testing-request/")
+  return res.data   // { id, status }
+}
+
+// Save product details
+export const saveProductDetails = (id, data) =>
+  api.post(`/testing-request/${id}/product`, data)
+
+// Save technical documents
+export const saveTechnicalDocuments = (id, data) =>
+  api.post(`/testing-request/${id}/documents`, data)
+
+// Save testing requirements
+export const saveTestingRequirements = (id, data) =>
+  api.post(`/testing-request/${id}/requirements`, data)
+
+// Save testing standards
+export const saveTestingStandards = (id, data) =>
+  api.post(`/testing-request/${id}/standards`, data)
+
+// Save lab selection as draft
+export const saveLabSelectionDraft = (id, data) =>
+  api.post(`/testing-request/${id}/lab-selection/draft`, data)
+
+// Submit request (labs)
+export const submitTestingRequest = (id, data) =>
+  api.post(`/testing-request/${id}/submit`, data)
+
+export const fetchFullTestingRequest = (id) =>
+  api.get(`/testing-request/${id}/full`).then(res => res.data)
